@@ -14,38 +14,29 @@ public class AddressBook {
             contacts.add(contact);
         }
 
-        public void addContactFromConsole() {
+        public void editContactByName(String firstName, String lastName) {
             Scanner scanner = new Scanner(System.in);
+            boolean found = false;
 
-            System.out.print("Enter First Name: ");
-            String firstName = scanner.nextLine().trim();
+            for (Contact contact : contacts) {
+                if (contact.getFirstName().equalsIgnoreCase(firstName) && contact.getLastName().equalsIgnoreCase(lastName)) {
+                    found = true;
+                    System.out.println("Found contact:");
+                    System.out.println(contact);
 
-            System.out.print("Enter Last Name: ");
-            String lastName = scanner.nextLine().trim();
+                    System.out.print("Enter updated Address:");
+                    String address = scanner.nextLine().trim();
+                    contact.setAddress(address);
 
-            System.out.print("Enter Address: ");
-            String address = scanner.nextLine().trim();
+                    System.out.println("Contact updated successfully:");
+                    System.out.println(contact);
+                    break;
+                }
+            }
 
-            System.out.print("Enter City: ");
-            String city = scanner.nextLine().trim();
-
-            System.out.print("Enter State: ");
-            String state = scanner.nextLine().trim();
-
-            System.out.print("Enter Zip Code: ");
-            String zip = scanner.nextLine().trim();
-
-            System.out.print("Enter Phone Number: ");
-            String phoneNumber = scanner.nextLine().trim();
-
-            System.out.print("Enter Email: ");
-            String email = scanner.nextLine().trim();
-
-            Contact newContact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
-            contacts.add(newContact);
-
-            System.out.println("Contact added successfully:");
-            System.out.println(newContact);
+            if (!found) {
+                System.out.println("Contact not found with name: " + firstName + " " + lastName);
+            }
 
             scanner.close();
         }
@@ -57,17 +48,11 @@ public class AddressBook {
         public static void main(String[] args) {
             AddressBook addressBook = new AddressBook();
 
-            // Adding initial contacts for testing
-            Contact initialContact1 = new Contact("Akash", "Kumar", "123 Elm St", "Springfield", "MH", "8642323", "934749242", "AkashKumar@example.com");
-            Contact initialContact2 = new Contact("Satvik", "Nair", "456 Maple Ave", "Springfield", "PJ", "827622", "904492222", "SatvikNair@example.com");
+            Contact newContact = new Contact("Akash", "Kumar", "123 Elm St", "Springfield", "MH", "8642323", "934749242", "AkashKumar@example.com");
+            addressBook.addContact(newContact);
 
-            addressBook.addContact(initialContact1);
-            addressBook.addContact(initialContact2);
+            addressBook.editContactByName("Akash", "Kumar");
 
-            // Adding a new contact from console
-            addressBook.addContactFromConsole();
-
-            // Display all contacts in address book
             List<Contact> allContacts = addressBook.getContacts();
             System.out.println("\nAll Contacts in Address Book:");
             for (Contact contact : allContacts) {
