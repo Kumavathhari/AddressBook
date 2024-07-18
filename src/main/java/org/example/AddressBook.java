@@ -51,7 +51,7 @@ public class AddressBook {
             System.out.println();
         }
     }
-
+  
     public void addContact() {
         boolean condi = true;
         while (condi) {
@@ -85,7 +85,7 @@ public class AddressBook {
                         contacts.add(newContact);
                         numOfContacts++;
                     }
-
+              
                 }
                 case 2 -> {
                     for (AddressBook cont : contacts) {
