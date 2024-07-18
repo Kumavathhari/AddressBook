@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.*;
 import java.util.stream.Collectors;
 public class MultipleAB {
@@ -84,6 +83,7 @@ public class MultipleAB {
         if (persons.isEmpty()) {
             System.out.println("No contacts found in " + city);
         } else {
+            System.out.println("Number of contacts found: "+ persons.size());
             persons.forEach(contact -> {
                 System.out.println("Name: " + contact.getFirstName() + " " + contact.getLastName());
                 System.out.println("Address: " + contact.getAddress());
@@ -103,6 +103,7 @@ public class MultipleAB {
             System.out.println("No contacts found in " + state);
         } else {
             persons.forEach(contact -> {
+                System.out.println("Number of contacts found: "+ persons.size());
                 System.out.println("Name: " + contact.getFirstName() + " " + contact.getLastName());
                 System.out.println("Address: " + contact.getAddress());
                 System.out.println("City: " + contact.getCity());
