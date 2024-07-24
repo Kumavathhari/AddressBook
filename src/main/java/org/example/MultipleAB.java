@@ -1,6 +1,8 @@
 package org.example;
+
 import java.util.*;
 import java.util.stream.Collectors;
+
 public class MultipleAB {
     static HashMap<String, AddressBook> multipleAB = new HashMap<>();
     static HashMap<String, Set<AddressBook>> cityPersonMap = new HashMap<>();
@@ -59,22 +61,13 @@ public class MultipleAB {
     }
 
     public static void searchPersonByCityOrState(String location) {
-        Set<AddressBook> result = new HashSet<>(cityPersonMap.getOrDefault(location, new HashSet<>()));
+        List<AddressBook> result = new ArrayList<>(cityPersonMap.getOrDefault(location, new HashSet<>()));
         result.addAll(statePersonMap.getOrDefault(location, new HashSet<>()));
 
         if (result.isEmpty()) {
             System.out.println("No contacts found in " + location);
         } else {
-            result.forEach(contact -> {
-                System.out.println("Name: " + contact.getFirstName() + " " + contact.getLastName());
-                System.out.println("Address: " + contact.getAddress());
-                System.out.println("City: " + contact.getCity());
-                System.out.println("State: " + contact.getState());
-                System.out.println("Zipcode: " + contact.getZipCode());
-                System.out.println("Phone Number: " + contact.getPhoneNumber());
-                System.out.println("Email: " + contact.getEmail());
-                System.out.println();
-            });
+            result.forEach(System.out::println);
         }
     }
 
@@ -83,17 +76,7 @@ public class MultipleAB {
         if (persons.isEmpty()) {
             System.out.println("No contacts found in " + city);
         } else {
-            System.out.println("Number of contacts found: "+ persons.size());
-            persons.forEach(contact -> {
-                System.out.println("Name: " + contact.getFirstName() + " " + contact.getLastName());
-                System.out.println("Address: " + contact.getAddress());
-                System.out.println("City: " + contact.getCity());
-                System.out.println("State: " + contact.getState());
-                System.out.println("Zipcode: " + contact.getZipCode());
-                System.out.println("Phone Number: " + contact.getPhoneNumber());
-                System.out.println("Email: " + contact.getEmail());
-                System.out.println();
-            });
+            persons.forEach(System.out::println);
         }
     }
 
@@ -102,17 +85,7 @@ public class MultipleAB {
         if (persons.isEmpty()) {
             System.out.println("No contacts found in " + state);
         } else {
-            persons.forEach(contact -> {
-                System.out.println("Number of contacts found: "+ persons.size());
-                System.out.println("Name: " + contact.getFirstName() + " " + contact.getLastName());
-                System.out.println("Address: " + contact.getAddress());
-                System.out.println("City: " + contact.getCity());
-                System.out.println("State: " + contact.getState());
-                System.out.println("Zipcode: " + contact.getZipCode());
-                System.out.println("Phone Number: " + contact.getPhoneNumber());
-                System.out.println("Email: " + contact.getEmail());
-                System.out.println();
-            });
+            persons.forEach(System.out::println);
         }
     }
 }
